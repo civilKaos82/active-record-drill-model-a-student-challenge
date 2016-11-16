@@ -77,14 +77,14 @@ We won't normally test our database's schema, but as we're still learning to wri
 
 
 ### Release 2: Virtual Attributes
-In the *Summary* we discussed virtual attributes—specifically, students having a full name and an age.  Now let's add these behaviors to our `Student` model.  We'll need to write both *getter* and *setter* methods (e.g., `#full_name` and `#full_name=`).
+In the *Summary* we discussed virtual attributes—specifically, students having a full name and an age.  Now let's add these behaviors to our `Student` model.  We'll need to write both *getter* and *setter* methods (e.g., `#full_name` and `#full_name=`).  Tests are provided in `spec/models/student_spec.rb`.  These particular tests are in an example group with the description `"virtual attributes"`.  We can use this description to run just these tests (see Figure 4).
+
+In addition to making the tests pass, open the Rake console and explore the model that we're building.  Build some students.  Set their full names and see the changes in the first and last names.  Set the first and last names and see the changes in their full names.  Change the birthdays and see the changes in the students' ages.  If we create students with our birthdays, are their ages correct?
 
 ```
 $ bundle exec rspec --example "virtual attributes" spec/models/student_spec.rb
 ```
 *Figure 4*. Running tests that have a specific description in a specific file.
-
-Tests are provided in `spec/models/student_spec.rb`.  These particular tests are in an example group with the description `"virtual attributes"`.  We can use this description to run just these tests (see Figure 4).
 
 
 ### Release 3: Validations
