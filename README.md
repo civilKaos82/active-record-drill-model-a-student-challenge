@@ -90,9 +90,9 @@ $ bundle exec rspec --example "virtual attributes" spec/models/student_spec.rb
 ### Release 3: Validations
 In order to help protect the integrity of our database (i.e., keep bad data out of it), we're going to add some validations to our `Student` model.  We'll use a combination of the built-in [validation helpers][Validation Helpers] and [custom validation methods][Custom Validation Methods].
 
-The validation tests are in an example group with the description `"validations"`.  Run these tests.  We'll see that some of the tests are passing and some are failing.  We haven't written any validations.  Why are some tests passing and others failing?  Right now, could any student be invalid?
+The validation tests are in an example group with the description `"validations"`.  Run these tests.  We'll see that some of the tests are passing and some are failing.  We haven't written any validations.  Why are some tests passing and others failing?  Right now, could any student be invalid?  Read through the validation specs to see what they expect, and then add the necessary validations to the `Student` model.  When we're done, all of the tests in the `"validations"` example group should pass.
 
-Now it's time to actually add our validations.  Read through the validation specs to see what they expect, and then add the necessary validations to the `Student` model.  When we're done, all of the tests in the `"validations"` example group should pass.
+Open the Rake console again and explore how validations affect the behavior of our model.  Create valid students.  Create invalid students.  How do we determine whether a student is valid?  If a student is invalid, how do we see the errors?  How does being invalid affect the ability to write to the database when creating or updating a student record?  Spend some time to build familiarity with how an Active Record model is affected by validations.
 
 Run all the tests for the `Student` class; they should all be passing.
 
