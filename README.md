@@ -77,22 +77,22 @@ We won't normally test our database's schema, but as we're still learning to wri
 
 
 ### Release 2: Virtual Attributes
-In the *Summary* we discussed virtual attributes—specifically, students having a full name and an age.  Now let's add these behaviors to our `Student` model.  We'll need to write both *getter* and *setter* methods (e.g., `#full_name` and `#full_name=`).
+In the *Summary* we discussed virtual attributes—specifically, students having a full name and an age.  Now let's add these behaviors to our `Student` model.  We'll need to write both *getter* and *setter* methods (e.g., `#full_name` and `#full_name=`).  Tests are provided in `spec/models/student_spec.rb`.  These particular tests are in an example group with the description `"virtual attributes"`.  We can use this description to run just these tests (see Figure 4).
+
+In addition to making the tests pass, open the Rake console and explore the model that we're building.  Build some students.  Set their full names and see the changes in the first and last names.  Set the first and last names and see the changes in their full names.  Change the birthdays and see the changes in the students' ages.  If we create students with our birthdays, are their ages correct?
 
 ```
 $ bundle exec rspec --example "virtual attributes" spec/models/student_spec.rb
 ```
 *Figure 4*. Running tests that have a specific description in a specific file.
 
-Tests are provided in `spec/models/student_spec.rb`.  These particular tests are in an example group with the description `"virtual attributes"`.  We can use this description to run just these tests (see Figure 4).
-
 
 ### Release 3: Validations
 In order to help protect the integrity of our database (i.e., keep bad data out of it), we're going to add some validations to our `Student` model.  We'll use a combination of the built-in [validation helpers][Validation Helpers] and [custom validation methods][Custom Validation Methods].
 
-The validation tests are in an example group with the description `"validations"`.  Run these tests.  We'll see that some of the tests are passing and some are failing.  We haven't written any validations.  Why are some tests passing and others failing?  Right now, could any student be invalid?
+The validation tests are in an example group with the description `"validations"`.  Run these tests.  We'll see that some of the tests are passing and some are failing.  We haven't written any validations.  Why are some tests passing and others failing?  Right now, could any student be invalid?  Read through the validation specs to see what they expect, and then add the necessary validations to the `Student` model.  When we're done, all of the tests in the `"validations"` example group should pass.
 
-Now it's time to actually add our validations.  Read through the validation specs to see what they expect, and then add the necessary validations to the `Student` model.  When we're done, all of the tests in the `"validations"` example group should pass.
+Open the Rake console again and explore how validations affect the behavior of our model.  Create valid students.  Create invalid students.  How do we determine whether a student is valid?  If a student is invalid, how do we see the errors?  How does being invalid affect the ability to write to the database when creating or updating a student record?  Spend some time to build familiarity with how an Active Record model is affected by validations.
 
 Run all the tests for the `Student` class; they should all be passing.
 
