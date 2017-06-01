@@ -84,28 +84,33 @@ describe Student do
       end
 
       describe '#age' do
-        let(:ten_years_ago) { Date.today - 10.years }
-        let(:ten_years_and_one_day_ago) { ten_years_ago - 1.day }
-        let(:one_day_shy_of_ten_years_ago) { ten_years_ago + 1.day }
-
         context 'has birthday today' do
           it 'correctly calculates the student\'s age' do
-            student = Student.new(birthday: ten_years_ago)
-            expect(student.age).to eq 10
+            (1..400).each do |years_ago|
+              birthday = Date.today - years_ago.years
+              student = Student.new(birthday: birthday)
+              expect(student.age).to eq years_ago
+            end
           end
         end
 
         context 'had a birthday yesterday' do
           it 'correctly calculates the student\'s age' do
-            student = Student.new(birthday: ten_years_and_one_day_ago)
-            expect(student.age).to eq 10
+            (1..400).each do |years_ago|
+              birthday = Date.today - years_ago.years - 1.day
+              student = Student.new(birthday: birthday)
+              expect(student.age).to eq years_ago
+            end
           end
         end
 
         context 'has a birthday tomorrow' do
           it 'correctly calculates the students age' do
-            student = Student.new(birthday: one_day_shy_of_ten_years_ago)
-            expect(student.age).to eq 9
+            (1..400).each do |years_ago|
+              birthday = Date.today - years_ago.years + 1.day
+              student = Student.new(birthday: birthday)
+              expect(student.age).to eq(years_ago - 1)
+            end
           end
         end
       end
